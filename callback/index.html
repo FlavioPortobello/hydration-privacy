@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>WHOOP Login...</title>
+  <title>WHOOP Login</title>
+</head>
+<body>
+  <h2>Login erfolgreich!</h2>
+  <p>Kopiere diesen Code in die App:</p>
+  <div id="code" style="font-size:18px; font-weight:bold; word-break:break-all; padding:10px; background:#eee; border-radius:8px;"></div>
   <script>
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
-    const error = params.get('error');
-    
     if (code) {
-      window.location.href = 'com.hydrationapp://oauth?code=' + code;
-    } else if (error) {
-      document.getElementById('msg').innerText = 'Fehler: ' + error;
+      document.getElementById('code').innerText = code;
+    } else {
+      document.getElementById('code').innerText = 'Kein Code gefunden: ' + window.location.href;
     }
   </script>
-</head>
-<body>
-  <p id="msg">Wird weitergeleitet...</p>
 </body>
 </html>
